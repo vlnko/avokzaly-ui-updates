@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRIP CARD</title>
+    <style>
+        /* PAGE */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        :root {
+            --color-main: #157FEA;
+            --color-background: #F5F5F5;
+            --color-gray: rgb(180, 180, 200);
+            --color-light-blue: #DEF;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            padding: 2rem;
+            margin: 0;
+            background-color: var(--color-background);
+            font-family: "Roboto", sans-serif;
+        }
+        a {
+            color: var(--color-main);
+            text-decoration: none;
+        }
+        .page-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* CARD LAYOUT */
+        .trip-card {
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background-color: white;
+            display: flex;
+            gap: 1rem;
+        }
+        .schedule {
+            display: flex;
+            gap: 1rem;
+            flex: 2;
+        }
+        .departure, .arrival, .duration, .buttons {
+            flex: 1;
+        }
+
+        /* SCHEDULE */
+        .hint {
+            font-size: .8rem;
+            color: var(--color-gray);
+            display: inline-block;
+            margin-bottom: 0.25rem;
+        }
+        .time {
+            flex: 1;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .station::before {
+            content: "●";
+            color: var(--color-main);
+            margin-right: .25rem;
+            font-size: 1.25rem;
+        }
+
+        /* BUTTONS */
+        .buttons {
+            border-left: 1px solid var(--color-light-blue);
+            padding-left: 1.5rem;
+        }
+        .buy-btn {
+            font-weight: 700;
+            font-size: .95rem;
+            text-align: center;
+            width: 100%;
+            text-decoration: none;
+            color: var(--color-main);
+            background-color: var(--color-light-blue);
+            padding: .8rem 1.6rem;
+            border-radius: .5rem;
+            display: inline-block;
+        }
+        .seats-left {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            font-size: .8rem;
+            color: var(--color-gray);
+            margin-top: 0.5rem;
+        }
+        @media screen and (max-width: 720px) {
+            .trip-card {
+                flex-direction: column;
+            }
+            .buttons {
+                border-left: none;
+                padding-left: 0;
+            }
+            .arrival {
+                text-align: right;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="page-wrapper">
+
+        <div class="trip-card">
+            <div class="schedule">
+                <div class="departure">
+                    <span class="hint">Отправление</span><br>
+                    <span class="time">09:30</span><br>
+                    <span class="station">Челябинск Областная</span>
+                </div>
+                <div class="arrival">
+                    <span class="hint">Прибытие</span><br>
+                    <span class="time">10:30</span><br>
+                    <span class="station">Еткуль</span>
+                </div>
+            </div>
+            <div class="duration">
+                <span class="hint">Время в пути</span><br>
+                <span style="display: inline-block; margin-top: .25rem;">1 час</span><br>
+                <a href="#" style="display: inline-block; margin-top: .5rem;">Информация о рейсе</a>
+            </div>
+            <div class="buttons">
+                <a href="#" class="buy-btn">Купить за 217 ₽</a>
+                <span class="seats-left">Осталось мест: 38</span>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>

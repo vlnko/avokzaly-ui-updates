@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORDER SUCCESS</title>
+    <style>
+        /* PAGE */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        :root {
+            --color-main: #157FEA;
+            --color-background: #F5F5F5;
+            --color-gray: rgb(180, 180, 200);
+            --color-light-blue: #DEF;
+            --color-red: rgb(255, 0, 70);
+            --color-light-red: rgb(255, 220, 230);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            padding: 2rem;
+            margin: 0;
+            background-color: var(--color-background);
+            font-family: "Roboto", sans-serif;
+        }
+        a {
+            color: var(--color-main);
+            text-decoration: none;
+        }
+        .page-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+        }
+
+        aside {
+            background-color: #fff;
+            border-radius: 1.5rem;
+            flex: 2;
+        }
+        .order-details {
+            background-color: white;
+            border-radius: 1.5rem;
+            flex: 1;
+            padding: 2rem;
+            height: fit-content;
+        }
+
+        /* SCHEDULE */
+        .hint {
+            font-size: .8rem;
+            color: var(--color-gray);
+            display: inline-block;
+            margin-bottom: 0.25rem;
+        }
+        .time {
+            flex: 1;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .station::before {
+            content: "●";
+            color: var(--color-main);
+            margin-right: .25rem;
+            font-size: 1.25rem;
+        }
+        .schedule {
+            margin: 1.5rem 0;
+        }
+        .arrival {
+            text-align: right;
+        }
+        .total, .order-items .row, .schedule {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .order-items {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            margin: 1rem 0;
+        }
+        .total {
+            padding: 1rem 0 0;
+            margin-top: 1rem;
+            border-top: 1px solid var(--color-light-blue);
+        }
+
+        /* ALERT */
+        .alert {
+            padding: 2rem;
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+        .alert.success {
+            background-color: var(--color-light-blue);
+            color: var(--color-main);
+        }
+        .alert.error {
+            background-color: var(--color-light-red);
+            color: var(--color-red);
+        }
+        .alert h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* PAGE CONTENT */
+        .page-content {
+            padding: 2rem;
+        }
+        .page-content h3 {
+            margin-bottom: 1rem;
+        }
+        .page-content h3:not(:first-child) {
+            margin-top: 2rem;
+        }
+        .inner-card-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .inner-card {
+            padding: 1rem;
+            border-radius: 1rem;
+            border: 1px solid var(--color-light-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* BUTTONS AND PILLS */
+        .btn-group {
+            display: flex;
+            gap: .5rem;
+        }
+        .btn-secondary {
+            text-decoration: none;
+            color: var(--color-main);
+            background-color: var(--color-light-blue);
+            padding: .5rem 1rem;
+            margin: 0;
+            border-radius: .5rem;
+            font-weight: 600;
+            box-sizing: border-box !important;
+            display: inline-block;
+        }
+        .pill {
+            font-size: .8rem;
+            display: inline-block;
+            padding: .3rem .7rem .35rem;
+            border-radius: 2rem;
+        }
+        .pill.red {
+            background-color: var(--color-light-red);
+            color: var(--color-red);
+        }
+        .pill.gray {
+            background-color: var(--color-background);
+            color: var(--color-gray);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #26282c;
+            margin: 4rem -2rem -2rem -2rem;
+            padding: 4rem;
+            display: flex;
+            gap: 1rem;
+            color: white;
+        }
+        footer .left, footer .right {
+            flex: 1;
+        }
+        footer .right {
+            display: flex;
+            gap: 1rem;
+        }
+        .footer-links-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        footer h5 {
+            font-size: 1rem;
+        }
+        footer a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, .7);
+        }
+        footer img {
+            width: 8rem;
+        }
+
+
+        @media screen and (max-width: 840px) {
+            footer, footer .right, .page-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            body {
+                padding: 1rem;
+            }
+            .btn-group {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside>
+            <div class="alert success"> <!-- Для отображения алерта с ошибкой меняем класс 'success' на 'error' -->
+                <h3>Ваши билеты успешно оформлены</h3>
+                <span>Распечатывать их не обязательно, посадка в автобус осуществляется по документу, удостоверяющему личность.</span>
+            </div>
+            <div class="page-content">
+                <h3>Пассажиры</h3>
+                <div class="inner-card-group">
+                    <div class="inner-card">
+                        <div>
+                            <h4>Иванов И.И.</h4>
+                            <span>Свид. о рожд. III-221100</span>
+                        </div>
+                        <div>
+                            <div class="btn-group">
+                                <a href="#" class="btn-secondary">Вернуть</a>
+                                <a href="#" class="btn-secondary">Скачать билет</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inner-card">
+                        <div>
+                            <h4>Иванов И.И.</h4>
+                            <span>Свид. о рожд. III-221100</span>
+                        </div>
+                        <div>
+                            <a href="#" class="pill gray">Возвращен</a>
+                        </div>
+                    </div>
+                    <div class="inner-card">
+                        <div>
+                            <h4>Иванов И.И.</h4>
+                            <span>Свид. о рожд. III-221100</span>
+                        </div>
+                        <div>
+                            <a href="#" class="pill red">Ошибка</a>
+                        </div>
+                    </div>
+                </div>
+                <h3>Страховые полисы</h3>
+                <div class="inner-card">
+                    <h4>Полис №110022</h4>
+                    <a href="#" class="btn-secondary">Скачать полис</a>
+                </div>
+                <h3>Чеки</h3>
+                <div class="btn-group">
+                    <a href="#" class="btn-secondary">Чек на билеты</a>
+                    <a href="#" class="btn-secondary">Чек на страховые полисы</a>
+                    <a href="#" class="btn-secondary">Чек на доп.услуги</a>
+                </div>
+            </div>
+        </aside>
+        <div class="order-details">
+            <h2>Заказ №102030</h3>
+            <div class="schedule">
+                <div class="departure">
+                    <span class="hint">14 мар, пт</span><br>
+                    <span class="time">09:30</span><br>
+                    <span class="station">Челябинск Областная</span>
+                </div>
+                <div class="arrival">
+                    <span class="hint">14 мар, пт</span><br>
+                    <span class="time">10:30</span><br>
+                    <span class="station">Еткуль</span>
+                </div>
+            </div>
+            <div class="order-items">
+                <div class="row">
+                    <span>Пассажирский х1</span>
+                    <span>271 ₽</span>
+                </div>
+                <div class="row">
+                    <span>Багажный х1</span>
+                    <span>99 ₽</span>
+                </div>
+                <div class="row">
+                    <span>Оповещение об отмене рейса</span>
+                    <span>10 ₽</span>
+                </div>
+                <div class="row">
+                    <span>Страхование жизни и здоровья</span>
+                    <span>20 ₽</span>
+                </div>
+            </div>
+            <div class="total">
+                <h2>Итого:</h2>
+                <h2>400 ₽</h2>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="left">
+            <img src="https://avokzaly.ru/static/public/img/black-bg-transformed.png" alt="logo">
+            <h3 style="margin: 1rem 0 .5rem;">Авокзалы — Билеты на автобусы России</h3>
+            <p>Сервис компании ООО "Изи Вей", 2016-2025</p>
+        </div>
+        <div class="right">
+            <div class="footer-links-col">
+                <h5>Компания</h5>
+                <a href="#">О нас</a>
+                <a href="#">Вакансии</a>
+                <a href="#">Контакты</a>
+            </div>
+            <div class="footer-links-col">
+                <h5>Клиентам</h5>
+                <a href="#">Возврат билетов</a>
+                <a href="#">Личный кабинет</a>
+                <a href="#">Служба поддержки</a>
+            </div>
+            <div class="footer-links-col">
+                <h5>Документы</h5>
+                <a href="#">Правила сервиса</a>
+                <a href="#">Конфиденциальность</a>
+            </div>
+        </div>
+
+    </footer>
+</body>
+</html>
