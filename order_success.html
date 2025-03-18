@@ -198,9 +198,15 @@
             width: 8rem;
         }
 
-
-        @media screen and (max-width: 840px) {
-            footer, footer .right, .page-wrapper {
+        /* ADAPTIVE LAYOUT */
+        @media screen and (max-width: 960px) {
+            .page-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+        @media screen and (max-width: 720px) {
+            footer, footer .right, .inner-card {
                 flex-direction: column;
                 gap: 2rem;
             }
@@ -209,6 +215,16 @@
             }
             .btn-group {
                 flex-direction: column;
+                text-align: center;
+            }
+            .inner-card {
+                gap: 1rem;
+            }
+            .inner-card div {
+                width: 100%;
+            }
+            .inner-card div .btn-secondary {
+                width: 100%;
                 text-align: center;
             }
         }
@@ -257,8 +273,12 @@
                 </div>
                 <h3>Страховые полисы</h3>
                 <div class="inner-card">
-                    <h4>Полис №110022</h4>
-                    <a href="#" class="btn-secondary">Скачать полис</a>
+                    <div>
+                        <h4>Полис №110022</h4>
+                    </div>
+                    <div>
+                        <a href="#" class="btn-secondary">Скачать полис</a>
+                    </div>
                 </div>
                 <h3>Чеки</h3>
                 <div class="btn-group">
