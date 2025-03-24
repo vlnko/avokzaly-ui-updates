@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY TICKETS</title>
+    <style>
+        /* PAGE */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        :root {
+            --color-main: #157FEA;
+            --color-background: #F5F5F5;
+            --color-gray: rgb(180, 180, 200);
+            --color-light-blue: #DEF;
+            --color-red: rgb(255, 0, 70);
+            --color-light-red: rgb(255, 220, 230);
+        }
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            padding: 2rem;
+            margin: 0;
+            background-color: var(--color-background);
+            font-family: "Roboto", sans-serif;
+        }
+        a {
+            color: var(--color-main);
+            text-decoration: none;
+        }
+        .page-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        aside {
+            background-color: #fff;
+            border-radius: 1.5rem;
+            padding: 2rem;
+        }
+        h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            border-radius: .5rem .5rem 0 0;
+            border-bottom: 1px solid var(--color-light-blue);
+            margin-bottom: 1.5rem;
+        }
+        .tabs a {
+            display: inline-flex;
+            padding: .8rem 1.4rem;
+            color: var(--color-gray);
+        }
+        .tabs a.selected {
+            color: var(--color-main);
+            border-radius: .5rem .5rem 0 0;
+            border: 1px solid var(--color-light-blue);
+            border-bottom: none;
+        }
+        .inner-card {
+            padding: 1rem;
+            border-radius: 1rem;
+            border: 1px solid var(--color-light-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* BUTTONS AND PILLS */
+        .btn-group {
+            display: flex;
+            gap: .5rem;
+        }
+        .btn-secondary {
+            text-decoration: none;
+            color: var(--color-main);
+            background-color: var(--color-light-blue);
+            padding: .5rem 1rem;
+            margin: 0;
+            border-radius: .5rem;
+            font-weight: 600;
+            box-sizing: border-box !important;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside>
+            <h2>Мои билеты</h2>
+            <div class="tabs">
+                <a href="#" class="selected">Предстоящие поездки</a>
+                <a href="#">Архивные поездки</a>
+            </div>
+            <div class="inner-card">
+                <div>
+                    <h4>Заказ №110022</h4>
+                    <span>1 взрослый, 1 багажный</span>
+                </div>
+                <div>
+                    <h4>Воронеж ЦАВ - Тамбов Северный</h4>
+                    <span>13 мар 2025 15:00</span>
+                </div>
+                <div>
+                    <a href="#" class="btn-secondary">Действия</a>
+                </div>
+            </div>
+
+        </aside>
+    </div>
+    
+</body>
+</html>

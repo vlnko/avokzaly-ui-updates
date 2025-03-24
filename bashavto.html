@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            padding: 2rem;
+            background-color: #f0f0f0;
+            font-family: sans-serif;
+        }
+        .page-wrapper {
+            max-width: 900px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .banner {
+            background-color: #124094;
+            color: white;
+            width: 100%;
+            display: flex;
+            padding: 2rem;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .banner h1 {
+            font-size: 1.3rem;
+        }
+        .banner a {
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: rgba(255,255,255,.15);
+            height: fit-content;
+        }
+        @media screen and (max-width:720px) {
+            .banner {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="banner">
+            <h1>Сайт автовокзалов Республики Башкортостан</h1>
+            <a href="https://автовокзалы-рб.рф">Купить билеты</a>
+        </div>
+    </div>
+</body>
+</html>
