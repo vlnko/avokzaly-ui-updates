@@ -165,9 +165,16 @@
             font-size: 1rem;
             font-weight: 500;
         }
+        .input-field:not(:placeholder-shown) {
+            background-color: white;
+        }
         .input-field:focus {
             border-color: white;
+            background-color: white;
             outline: 2px solid var(--color-main);
+        }
+        ::placeholder {
+            color: var(--color-gray);
         }
         .cols2 {
             display: inline-flex;
@@ -383,12 +390,12 @@
             </div>
 
             <div class="page-content">
-                <p>Нажимая кнопку "Перейти к оплате", Вы даете свое согласие на обработку персональных данных и соглашаетесь 
+                <p>Нажимая кнопку "Оплатить", Вы даете свое согласие на обработку персональных данных и соглашаетесь 
                     с условиями и <a href="#">правилами сервиса</a>, а также с <a href="#">условиями страхования</a></p>
                 <div class="spacer1"></div>
                 <div class="btn-group">
-                    <a href="#" class="btn-primary" style="background-color: black;">Оплатить по СБП</a>
-                    <a href="#" class="btn-primary">Оплатить по карте</a>
+                    <a href="#" class="btn-primary">Оплатить по СБП</a>
+                    <a href="#" class="btn-secondary">Оплатить по карте</a>
                     <a href="#" class="btn-secondary">Добавить пассажира</a>
                 </div>
             </div>
