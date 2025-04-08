@@ -227,6 +227,23 @@
 
 
         /* ADAPTIVE LAYOUT */
+        @media screen and (max-width: 1080px) {
+            .page-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            aside {
+                max-width: 100%;
+            }
+            .btn-group.heading {
+                flex-direction: row;
+            }
+            .order-details {
+                position:static;
+            }
+        }
+
+
         @media screen and (max-width: 960px) {
             .page-wrapper {
                 flex-direction: column;
@@ -240,6 +257,13 @@
             .btn-group {
                 flex-direction: column;
                 text-align: center;
+            }
+        }
+        @media screen and (max-width: 640px) {
+            .form-row {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
             }
         }
         .spacer1 {
@@ -272,7 +296,7 @@
             <div class="page-content">
                 <div class="spacebetween">
                     <h3>Пассажир №1</h3>
-                    <div class="btn-group">
+                    <div class="btn-group heading">
                         <a href="#" class="btn-action-sm">Автозаполнение</a>
                         <a href="#" class="btn-action-sm btn-cross">✖</a>
 
@@ -365,7 +389,7 @@
 
                 <div class="spacebetween" style="margin-top: 1rem !important;">
                     <h3>Пассажир №2</h3>
-                    <div class="btn-group">
+                    <div class="btn-group heading">
                         <a href="#" class="btn-action-sm">Автозаполнение</a>
                         <a href="#" class="btn-action-sm btn-cross">✖</a>
 
