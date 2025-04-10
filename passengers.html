@@ -53,6 +53,7 @@
             height: fit-content;
             position: sticky;
             top: 2rem;
+            box-shadow: 0 1.5rem 1.5rem -1.5rem rgba(0,0,0,0.05);
         }
         /* #endregion */
 
@@ -96,6 +97,17 @@
             margin-top: 1rem;
             border-top: 1px solid var(--color-light-blue);
         }
+        .order-details.collapsed > .schedule, .order-details.collapsed > .order-items, .order-details.collapsed > .total {
+            display: none;
+        }
+        .order-details svg {
+            cursor: pointer;
+            width: 1.5rem;
+            color: var(--color-gray);
+        }
+        .order-details.collapsed svg {
+            transform: rotate(180deg);
+        }
         /* #endregion */
 
         /* #region СТРАНИЦА */
@@ -104,6 +116,7 @@
             max-width: 100%;
             background-color: #fff;
             border-radius: 1.5rem;
+            box-shadow: 0 1.5rem 1.5rem -1.5rem rgba(0,0,0,0.05);
         }
         .page-content:not(:last-child) {
             margin-bottom: 2rem;
@@ -131,6 +144,7 @@
             font-weight: 600;
             box-sizing: border-box !important;
             display: inline-block;
+            cursor: pointer;
         }
         .btn-secondary {
             text-decoration: none;
@@ -142,6 +156,7 @@
             font-weight: 600;
             box-sizing: border-box !important;
             display: inline-block;
+            cursor: pointer;
         }
         .btn-action-sm { 
             border: 1px solid var(--color-main); 
@@ -152,12 +167,14 @@
             width: fit-content; 
             height: fit-content; 
             border-radius: 1rem; 
-            font-weight: 500; 
+            font-weight: 500;
+            cursor: pointer; 
         } 
         .btn-cross { 
             padding: .25rem 0 .35rem .6rem ; 
             border: none; 
-            color: var(--color-gray); 
+            color: var(--color-gray);
+            cursor: pointer; 
         }
         /* #endregion */
 
@@ -352,6 +369,7 @@
         }
         /* #endregion */
     </style>
+    <script src="https://unpkg.com/hyperscript.org@0.9.14"></script>
 </head>
 <body>
     <div class="page-wrapper">
@@ -375,7 +393,7 @@
                     <label class="control control--checkbox">
                         Уведомить меня в случае отмены рейса
                         <input type="checkbox" checked/>
-                        <div class="control__indicator input-error"></div>
+                        <div class="control__indicator"></div>
                     </label>
                 </div>
             </div>
@@ -386,7 +404,7 @@
                 <div class="spacebetween">
                     <h3>Пассажир №1</h3>
                     <div class="btn-group heading">
-                        <a href="#" class="btn-action-sm">Автозаполнение</a>
+                        <span class="btn-action-sm">Автозаполнение</span>
                         <a href="#" class="btn-action-sm btn-cross">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5" style="width: 20px;">
                                 <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
@@ -475,7 +493,13 @@
                             </select>
                         </div>
                     </div>
-
+                </div>
+                <div class="checkbox-wrapper">
+                    <label class="control control--checkbox">
+                        Страхование жизни и здоровья в поездке
+                        <input type="checkbox" checked/>
+                        <div class="control__indicator"></div>
+                    </label>
                 </div>
             </div>
 
@@ -483,7 +507,7 @@
                 <div class="spacebetween" style="margin-top: 1rem !important;">
                     <h3>Пассажир №2</h3>
                     <div class="btn-group heading">
-                        <a href="#" class="btn-action-sm">Автозаполнение</a>
+                        <span class="btn-action-sm">Автозаполнение</span>
                         <a href="#" class="btn-action-sm btn-cross">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5" style="width: 20px;">
                                 <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
@@ -573,7 +597,13 @@
                         </div>
                     </div>
                 </div>
-                
+                <div class="checkbox-wrapper">
+                    <label class="control control--checkbox">
+                        Страхование жизни и здоровья в поездке
+                        <input type="checkbox" checked/>
+                        <div class="control__indicator"></div>
+                    </label>
+                </div>
             </div>
             <!-- #endregion -->
 
@@ -587,13 +617,15 @@
                     <label class="control control--checkbox">
                         Соглашаюсь на обработку моих персональных данных
                         <input type="checkbox" />
-                        <div class="control__indicator"></div>
+                        <div class="control__indicator pd"></div>
                     </label>
                 </div>
                     
                 
                 <div class="btn-group">
-                    <a href="#" class="btn-primary">Оплатить по СБП</a>
+                    <span class="btn-primary"
+                        _="on click add .input-error to .pd"
+                    >Оплатить по СБП</span>
                     <a href="#" class="btn-secondary">Оплатить по карте</a>
                 </div>
                 <span class="sub-info">Нажимая кнопку "Оплатить" вы соглашаетесь с условиями и <a href="#">правилами сервиса</a>, а также с <a href="#">условиями страхования</a></span>
@@ -602,7 +634,14 @@
         </aside>
 
         <div class="order-details">
-            <h2>Заказ №102030</h3>
+            <div class="spacebetween">
+                <h2>Заказ №102030</h3>
+                <svg
+                    _="on click toggle .collapsed on .order-details"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                </svg>
+            </div>
             <div class="schedule">
                 <div class="departure">
                     <span class="hint">14 мар, пт</span><br>
