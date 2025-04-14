@@ -170,6 +170,10 @@
             font-weight: 500;
             cursor: pointer; 
         } 
+        .btn-action-sm.gray {
+            border: 1px solid var(--color-gray); 
+            color: rgba(0,0,0,.5); 
+        }
         .btn-cross { 
             padding: .25rem 0 .35rem .6rem ; 
             border: none; 
@@ -303,6 +307,32 @@
         }
         /* #endregion */
 
+        .insurance-block {
+            /* background-color: var(--color-background); */
+            border: 1px solid #e5e5e5;
+            padding: 1rem 1rem 1rem 2rem;
+            border-radius: 1rem;
+            font-size: .9rem;
+        }
+        .insurance-block * {
+            height: 100%;
+        }
+        .insurance-block h4 {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+        .items-center {
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .ins-logo {
+            height: 1.5rem;
+        }
+        .ins-status {
+            color: var(--color-main);
+        }
+        
         /* #region ВСПОМОГАТЕЛЬНОЕ */
         .spacer1 {
             height: 1rem;
@@ -494,13 +524,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="checkbox-wrapper">
-                    <label class="control control--checkbox">
-                        Страхование жизни и здоровья в поездке
-                        <input type="checkbox" checked/>
-                        <div class="control__indicator"></div>
-                    </label>
+
+
+
+                <div class="insurance-block">
+                    <div class="spacebetween items-center">
+                        <img src="ibg-logo-custom.png" alt="ibg-logo" class="ins-logo">
+                        <span>Страхование жизни и здоровья на время поездки</span>
+                        <span class="btn-action-sm gray">Отказаться</span>
+                    </div>
                 </div>
+
             </div>
 
             <div class="page-content">
@@ -597,12 +631,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="checkbox-wrapper">
-                    <label class="control control--checkbox">
-                        Страхование жизни и здоровья в поездке
-                        <input type="checkbox" checked/>
-                        <div class="control__indicator"></div>
-                    </label>
+                <div class="insurance-block"
+                    _="on click toggle the *display of the .ins-status">
+                    <div class="spacebetween items-center">
+                        <img src="ibg-logo-custom.png" alt="ibg-logo" class="ins-logo">
+                        <span>Страхование жизни и здоровья на время поездки</span>
+                        <div>
+                            <select name="ins" id=ins"" class="input-field">
+                                <option value="0">не нужно</option>
+                                <option value="1" selected>нужно</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- #endregion -->
